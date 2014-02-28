@@ -1,4 +1,7 @@
 Quizy::Application.routes.draw do
+  
+  get '/auth/:provider/callback' => 'authentications#create'  
+  resources :authentications
 
   devise_for :users
   
@@ -14,9 +17,11 @@ Quizy::Application.routes.draw do
   resources :challenges
   
   resources :questions do 
-      resources :answers
-    end
+    resources :answers
+  end
   
+  get '/profile' => 'users#show'
+
   root :to => "questions#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -25,7 +30,6 @@ Quizy::Application.routes.draw do
   # You can have the root of your site routed with "root"
 
   # root :to => "users#index"
-  get '/profile' => 'users#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

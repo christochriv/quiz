@@ -33,6 +33,10 @@ gem 'devise'
 #Photos integration
 gem 'paperclip', "~> 3.0"
 
+#Authentification with devise
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 
 
 #debuger
